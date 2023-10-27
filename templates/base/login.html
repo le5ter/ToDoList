@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block greeting %}
+<div class="greeting-message">
+    <h1>Привет, это приложение где ты можешь создавать различные задачи.<br>
+        Чтобы начать, нужно Зарегистрироваться или Войти.
+    </h1>
+</div>
+{% endblock greeting %}
+
+{% block content %}
+
+<div class="header-bar">
+    <h1>Войти</h1>
+</div>
+
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="button" type="submit" value="Войти">
+    </form>
+    <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+</div>
+
+{% endblock content %}
