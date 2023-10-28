@@ -27,8 +27,10 @@ SECRET_KEY = f'{os.getenv("SECRET_KEY")}'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv("DJANGO_DEBUG"))
 
-ALLOWED_HOSTS = []
-
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['HOST IP', 'DOMAIN NAIM', 'localhost']
 
 # Application definition
 
@@ -126,9 +128,20 @@ LOGIN_URL = 'login'
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+if DEBUG:
+    STATIC_DIR = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = [
+        STATIC_DIR,
+        '/var/www/static/',
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    STATICFILES_FINDERS = (
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
