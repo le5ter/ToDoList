@@ -30,7 +30,7 @@ DEBUG = bool(os.getenv("DJANGO_DEBUG"))
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['HOST IP', 'DOMAIN NAIM', 'localhost']
+    ALLOWED_HOSTS = ['31.172.64.187', 'localhost']
 
 # Application definition
 
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ToDoList.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ToDoList',
+        'NAME': 'todolist',
         'USER': 'alexey',
         'PASSWORD': f'{os.getenv("DB_PASS")}',
         'HOST': 'localhost',
@@ -127,15 +127,15 @@ LOGIN_URL = 'login'
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
 
 if DEBUG:
-    STATIC_DIR = os.path.join(BASE_DIR, 'static')
+    STATIC_DIR = os.path.join(BASE_DIR, 'ToDoList/static')
     STATICFILES_DIRS = [
         STATIC_DIR,
         '/var/www/static/',
     ]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',

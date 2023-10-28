@@ -1,5 +1,8 @@
-.venv
+venv/
 .env
+/static
 .DS_Store
 *.sqlite3
 __pycache__
+db.json
+
