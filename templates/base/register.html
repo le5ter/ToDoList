@@ -16,6 +16,7 @@
 
         <label>{{ form.password2.label }}</label>
         {{ form.password2 }}
+        {{ form.errors }}
         <input style="margin-top: 10px" class="button" type="submit" value="Зарегистрироваться">
     </form>
     <p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
