@@ -30,7 +30,7 @@ DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['31.172.64.187', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['31.172.64.187', 'to-do-list.ru', 'localhost', '127.0.0.1']
 
 # Application definition
 
