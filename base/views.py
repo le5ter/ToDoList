@@ -68,6 +68,12 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('tasks')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        button_text = "Создать"
+        context["button_text"] = button_text
+        return context
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
@@ -77,6 +83,12 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('tasks')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        button_text = "Изменить"
+        context["button_text"] = button_text
+        return context
 
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
