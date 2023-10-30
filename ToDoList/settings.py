@@ -25,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = f'{os.getenv("SECRET_KEY")}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv("DJANGO_DEBUG"))
+DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['31.172.64.187', 'localhost']
+    ALLOWED_HOSTS = ['31.172.64.187', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'base',
+    'api',
 ]
 
 MIDDLEWARE = [
